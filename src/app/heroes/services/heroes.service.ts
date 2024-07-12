@@ -10,22 +10,15 @@ export class HeroesService {
   private baseUrl: string = environments.baseUrl;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
 
   getHeroes():Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes`);
-  }
-
-  getHeroById( id: string ): Observable<Hero|undefined> {
-    return this.http.get<Hero>(`${ this.baseUrl }/heroes/${ id }`)
-      .pipe(
-        catchError( error => of(undefined) )
-      );
+    return this.httpClient.get<Hero[]>(`${ this.baseUrl }/heroes`);
   }
 
   getSuggestions( query: string ): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
+    return this.httpClient.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
   }
 
   getHeroById( id: string ): Observable<Hero|undefined> {
@@ -34,11 +27,5 @@ export class HeroesService {
         catchError( error => of(undefined) )
       );
   }
-
-  getSuggestions( query: string ): Observable<Hero[]> {
-    return this.httpClient.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
-  }
-
-
 
 }

@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     HeroesRoutingModule,
+    ReactiveFormsModule,
     MaterialModule
   ]
 })

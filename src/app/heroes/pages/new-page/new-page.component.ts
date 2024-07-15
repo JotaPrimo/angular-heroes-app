@@ -38,6 +38,18 @@ export class NewPageComponent {
 
   onSubmit(): void {
     if ( this.heroForm.invalid ) return;
+
+    if ( this.currentHero.id ) {
+      this.heroesService.updateHero( this.currentHero ).subscribe( hero => {
+        // TODO : mostrar scnackbar
+      });
+
+      return;
+    }
+
+    this.heroesService.addHero( this.currentHero ).subscribe( hero => {
+       // TODO : mostrar scnackbar e redicrect
+    });
   }
 
 }
